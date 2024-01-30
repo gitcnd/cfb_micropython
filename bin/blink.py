@@ -16,8 +16,8 @@ def run(*args):
     while args and (args[-1] == b'' or args[-1] == ''): args.pop()  # strip empty endings
     num = 3
     pin = 4
-    tion = 1.0
-    toff = 1.0
+    tion = 0.3
+    toff = 0.7
     print(args)
 
     # if args and args[-1] == "&": args.pop()
@@ -42,6 +42,8 @@ def run(*args):
 
     while num>0:
         led.value(1)
+        if isinstance(tion, complex):
+            tion=tion.imag
         time.sleep(tion)
         led.value(0)
         time.sleep(toff)
